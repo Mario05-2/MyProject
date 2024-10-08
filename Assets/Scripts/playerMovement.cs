@@ -24,13 +24,14 @@ public class playerMovement : MonoBehaviour
 
     private Animator anim;
 
-    public 
+   // public float postionOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();  
         rb = GetComponent<Rigidbody2D>();
+        //postionOffset = 1;
     }
 
     // Update is called once per frame
@@ -48,6 +49,8 @@ public class playerMovement : MonoBehaviour
         if(Move != 0)
         {
             anim.SetBool("isRunning?", true);
+
+            //transform.position = new Vector3(transform.position.x, transform.position.y+postionOffset, 0);
         }
         else
         {
