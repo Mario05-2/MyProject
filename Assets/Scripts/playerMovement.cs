@@ -24,11 +24,14 @@ public class playerMovement : MonoBehaviour
 
     private Animator anim;
 
+    private bool isFacingRight;
+
    // public float postionOffset;
 
     // Start is called before the first frame update
     void Start()
     {
+        isFacingRight = true;
         anim = GetComponent<Animator>();  
         rb = GetComponent<Rigidbody2D>();
         //postionOffset = 1;
@@ -56,6 +59,22 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetBool("isRunning?", false);
         }
+
+        if(!isFacingRight && Move > 0)
+        {
+            Flip();
+        }else if(isFacingRight && Move < 0)
+        {
+            Flip();
+        }
+    }
+
+    public void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
     }
 
     public bool isGrounded()
