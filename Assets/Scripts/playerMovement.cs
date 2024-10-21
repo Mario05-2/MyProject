@@ -60,6 +60,8 @@ public class playerMovement : MonoBehaviour
             anim.SetBool("isRunning?", false);
         }
 
+            anim.SetBool("isJumping?", !isGrounded());
+
         if(!isFacingRight && Move > 0)
         {
             Flip();
