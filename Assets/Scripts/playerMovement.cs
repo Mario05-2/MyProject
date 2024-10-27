@@ -26,6 +26,8 @@ public class playerMovement : MonoBehaviour
 
     private bool isFacingRight;
 
+    public CoinManager cm;
+
    // public float postionOffset;
 
     // Start is called before the first frame update
@@ -115,4 +117,14 @@ public class playerMovement : MonoBehaviour
     //        grounded = false;
     //    }
     //}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("Coin collected");
+            Destroy(other.gameObject);
+            cm.coinCount++;
+        }
+    }
 }

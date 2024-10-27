@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class damage : MonoBehaviour
 {
+    public playerHealth PlayerHealth;
+    public int amountDamage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +19,13 @@ public class damage : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collsion)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collsion.gameObject.tag == "Player")
         {
-            //collision.gameObject.GetComponent<healthPlayer>().TakeDamage(1);
+            PlayerHealth.TakeDamage(amountDamage);
         }
-    } 
+    }
+
+   
 }
